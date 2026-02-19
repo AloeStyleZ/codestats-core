@@ -1,0 +1,99 @@
+{
+  "name": "codestats-core",
+  "displayName": "CodeStats-Core",
+  "description": "Análisis visual instantáneo de código. Trust score, hardcoded detection, unused code. Soporta Python, JS/TS, PHP, HTML/CSS.",
+  "version": "1.0.0",
+  "publisher": "codestats-core",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Testing", "Linters", "Other"],
+  "activationEvents": [
+    "onLanguage:python",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
+    "onLanguage:php",
+    "onLanguage:html",
+    "onLanguage:css"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codestat.analyze",
+        "title": "CodeStats-Core: Analizar archivo actual",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "codestat.copyPrompt",
+        "title": "CodeStats-Core: Copiar prompt para GENERAR código nuevo"
+      },
+      {
+        "command": "codestat.copyConvertPrompt",
+        "title": "CodeStats-Core: Copiar prompt para CONVERTIR código actual"
+      },
+      {
+        "command": "codestat.openMap",
+        "title": "CodeStats-Core: Abrir mapa interactivo"
+      },
+      {
+        "command": "codestat.generateTests",
+        "title": "CodeStats-Core: Generar tests (Pytest)"
+      },
+      {
+        "command": "codestat.extractSnippet",
+        "title": "CodeStats-Core: Extraer prompt para mejorar método"
+      },
+      {
+        "command": "codestat.showPromptHistory",
+        "title": "CodeStats-Core: Ver historial de prompts"
+      },
+      {
+        "command": "codestat.verifyDeps",
+        "title": "CodeStats-Core: Verificar dependencias"
+      },
+      {
+        "command": "codestat.installDep",
+        "title": "CodeStats-Core: Instalar dependencia"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codestat-sidebar",
+          "title": "CodeStats-Core",
+          "icon": "$(pulse)"
+        }
+      ]
+    },
+    "views": {
+      "codestat-sidebar": [
+        {
+          "type": "webview",
+          "id": "codestat.statsView",
+          "name": "Stats"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "codestat.analyze",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  }
+}
